@@ -1,6 +1,26 @@
+<html>
+  <head>
+    <title>Grocery List App</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Grocery List app</title>
+  </head>
+  <body>
+    
+  </body>
+</html>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #28abb9;
+}
+</style>
+
+
 <script>
 // Example POST method implementation:
-async function postData(url = '', data = {}) {
+async function postData(url = '',) {
   // Default options are marked with *
   const response = await fetch(url, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -17,7 +37,7 @@ async function postData(url = '', data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-postData('https://api.lyrics.ovh/suggest/stairway', { answer: 42 })
+postData('https://api.lyrics.ovh/suggest/stairway')
   .then(data => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
