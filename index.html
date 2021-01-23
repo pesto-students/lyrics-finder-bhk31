@@ -1,20 +1,66 @@
 <html>
   <head>
-    <title>Grocery List App</title>
-    <link rel="stylesheet" href="./style/style.css" />
-    <title>Grocery List app</title>
+    <title>Lyrics search</title>
   </head>
+
   <body>
-    
+    <div class="container" id="loggedIn">
+      <div class="main-container">
+        <form id="grocery-form" action="#">
+          <input
+            type="text"
+            id="item"
+            name="item"
+            placeholder="Enter name of song."
+          />
+          <input type="button" value="Save" id="save" />
+        </form>
+      </div>
+    </div>
   </body>
 </html>
 <style>
+
 body {
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: #28abb9;
 }
+
+.hide {
+    display: none !important;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  #grocery-form {
+    display: flex;
+    margin: 2% 0 2% 0%;
+  }
+
+  #item {
+    width: 80%;
+    padding: 1%;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+  }
+
+  #save {
+    width: 30%;
+    padding: 1%;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+  }
 </style>
 
 
