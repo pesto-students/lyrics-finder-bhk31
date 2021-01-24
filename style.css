@@ -1,0 +1,57 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ef4f4f;
+}
+
+.lyrics {
+  display: none;
+}
+
+.item {
+  display:flex;
+  width: 30%;
+  border:2px solid #ffcda3;
+  padding:1%;
+  margin: 0 1% 1% 0;
+  justify-content:space-between;
+}
+
+.item:hover{
+  box-shadow:5px 5px 5px 5px;
+}
+
+.hide {
+    display: none !important;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  #lyrics-form {
+    display: flex;
+    margin: 2% 0 2% 0%;
+  }
+
+  #song {
+    width: 80%;
+    padding: 1%;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+  }
+
+  #search {
+    width: 30%;
+    padding: 1%;
+    border: 2px solid black;
+    box-shadow: 2px 3px black;
+  }
