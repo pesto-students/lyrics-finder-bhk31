@@ -57,7 +57,7 @@ function getSuggestions(song) {
           <img src="${el.album.cover}" alt="">
           <div style="display: flex; flex-direction: column; margin: 1%;">
             <p class="title"><b>Title:</b><span>${el.album.title}</p>
-            <p class="artist"><b>Artist:</b>${el.artist.name}</p>
+            <p class="artist-name"><b>Artist:</b>${el.artist.name}</p>
             <div display:flex;>
             <a href="${el.preview}" target="_blank">Listen</a>
             <a href="#" class="view-lyrics" data-artist="${el.artist.name}" data-title="${el.album.title}" onclick="getLyrics('${el.artist.name}','${el.album.title}')">View Lyrics</a>
