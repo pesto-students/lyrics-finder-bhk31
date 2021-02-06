@@ -9,123 +9,93 @@
   <div class="container" id="loggedIn">
     <div style="display: flex; justify-content: center;">
       <a href="https://pesto-students.github.io/lyrics-finder-bhk31/">
-      <img src="./assets/Tesla_band_logo.png" alt="" width="150" height="120">
-    </a>
+        <img src="./assets/Tesla_band_logo.png" alt="" width="150" height="120">
+      </a>
     </div>
-    
+
     <div class="main-container">
       <form id="lyrics-form" action="#">
         <input type="text" id="song" name="song" placeholder="Enter Artist/Title" />
         <input type="button" value="Search" id="search" />
       </form>
 
-      <div style="display: flex; flex-direction: row; flex-wrap: wrap;" id="list-container">
-        <div class="row">
-          <div class="artist" onclick="searchArtist('Miley Cirus')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/cc2851764dbc3d815b24b7d32ceab2d4/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Miley Cirus</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Backstreet Boys')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/6560429ca706ad5114e1167b49bafe9a/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Backstreet Boys</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Camila Cabello')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/7545c1cf7251e889585191fb5ace2da3/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Camila Cabello</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Daddy Yankee')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/5f45206580cde1388f71ccc7f8226768/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Daddy Yankee</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Pitbull')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/f755bcad19948129e670598a52d3f874/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Pitbull</p>
-          </div>
+      <div id="list-container">
+        <div class="artist" onclick="searchArtist('Miley Cirus')">
+          <img src="./assets/miley-cirus.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Miley Cirus</p>
         </div>
-
-        <div class="row">
-          <div class="artist" onclick="searchArtist('Jennifer Lopez')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/2fa1c95948cf111e38aed58b64b49556/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Jennifer Lopez</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Justin Bieber')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/ab09b27093a763ac12fe03fd1d8170c4/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Justin Bieber</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Justin Timberlake')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/7c2c076d891f64a039b572fea7df3b96/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Justin Timberlake</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Backstreet Boys')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/6560429ca706ad5114e1167b49bafe9a/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Backstreet Boys</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Nick Jonas')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/ed53c1194b7626dd2a4807c754d3924f/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Nick Jonas</p>
-          </div>
+        <div class="artist" onclick="searchArtist('Backstreet Boys')">
+          <img src="./assets/backstreet-boys.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Backstreet Boys</p>
         </div>
-        <div class="row">
-          <div class="artist" onclick="searchArtist('Priyanka Chopra')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/fb2342772c1f6708562b148e82983a5f/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Priyanka Chopra</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Bruno Mars')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/25d38ffc3fd6a36ac71a08ff6ed90fa2/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Bruno Mars</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Ed Sheeran')">
-            <img
-              src="http://e-cdn-images.deezer.com/images/artist/f4daf253b92a1a9646844c5162e2a968/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Ed Sheeran</p>
-          </div>
-          <div class="artist" onclick="searchArtist('One Direction')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/6760dba71ba14145eec5478d8b135c55/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">One Direction</p>
-          </div>
-          <div class="artist" onclick="searchArtist('Nicole Scherzinger')">
-            <img
-              src="http://cdn-images.deezer.com/images/artist/47c82a37ed33520acde160416ca18398/265x265-000000-80-0-0.jpg"
-              alt="">
-            <p style="text-align:center; font-weight:bold;">Nicole Scherzinger</p>
-          </div>
+        <div class="artist" onclick="searchArtist('Camila Cabello')">
+          <img src="./assets/camilla.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Camila Cabello</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Daddy Yankee')">
+          <img src="./assets/daddy-yankee.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Daddy Yankee</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Pitbull')">
+          <img src="./assets/pitbull.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Pitbull</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Jennifer Lopez')">
+          <img src="./assets/jlo.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Jennifer Lopez</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Justin Bieber')">
+          <img src="./assets/justin-bieber.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Justin Bieber</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Justin Timberlake')">
+          <img src="./assets/justin-timberlake.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Justin Timberlake</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Akon')">
+          <img src="./assets/akon.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Akon</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Nick Jonas')">
+          <img src="./assets/nick-jonas.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Nick Jonas</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Priyanka Chopra')">
+          <img src="./assets/priyanka.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Priyanka Chopra</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Bruno Mars')">
+          <img src="./assets/bruno-marsjpg.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Bruno Mars</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Ed Sheeran')">
+          <img src="./assets/ed-sheeran.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Ed Sheeran</p>
+        </div>
+        <div class="artist" onclick="searchArtist('One Direction')">
+          <img src="./assets/one-direction.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">One Direction</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Nicole Scherzinger')">
+          <img src="./assets/nicole-scherzinger.jpg" alt="">
+          <p style="text-align:center; font-weight:bold;">Nicole Scherzinger</p>
         </div>
       </div>
 
-      <div id="myModal" class="lyrics">
-        <div id="content"></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span id="close">&times;</span>
+          <h2 id=heading></h2>
+          <p id=lyrics>Some text in the Modal..</p>
+        </div>
 
       </div>
     </div>
   </div>
 </body>
 <script src="./scripts.js"></script>
+
 </html>

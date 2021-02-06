@@ -1,5 +1,14 @@
+function getInputElementFromForm(form, input) {
+  let formData = new FormData(getSelectedElement(form));
+  return formData.get(input);
+}
+
+function getSelectedElement(element) {
+  return document.getElementById(element);
+}
+
 // Example POST method implementation:
-async function postData(url = '',) {
+async function fetchExternalData(url = '',) {
   // Default options are marked with *
   const response = await fetch(url, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -16,63 +25,111 @@ async function postData(url = '',) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-
-// let modal = document.getElementById("myModal");
-
-document.getElementById('search').onclick = function () {
+getSelectedElement('search').onclick = function () {
   let song = getInputElementFromForm('lyrics-form', 'song');
-  getSuggestions(song);
+  searchArtist(song);
 }
 
-// const getLyrics = (artist, title) => {
-//   console.log(artist);
-//   console.log(title);
-
-//   let url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-//   let lyricsPromise = postData(url)
-//   lyricsPromise.then(data => {
-//     let modal = document.getElementById("myModal");
-//     let content = document.getElementById("content");
-//     modal.style.display = "flex";
-//     content.innerText = data.lyrics;
-//   });
-// }
-
-function getInputElementFromForm(form, input) {
-  let formData = new FormData(getSelectedElement(form));
-  return formData.get(input);
-}
-
-function getSelectedElement(element) {
-  return document.getElementById(element);
-}
-
-function getSuggestions(song) {
-  let searchResult = postData('https://api.lyrics.ovh/suggest/' + song);
-  searchResult.then(data => {
-    // console.log(data.data, data.total); // JSON data parsed by `data.json()` call
-    let itemElement = '';
-    for (el of data.data) {
-      itemElement += `<div class="item" >
-          <img src="${el.album.cover}" alt="">
-          <div style="display: flex; flex-direction: column; margin: 1%;">
-            <p class="title"><b>Title:</b><span>${el.album.title}</p>
-            <p class="artist-name"><b>Artist:</b>${el.artist.name}</p>
-            <div display:flex;>
-            <a href="${el.preview}" target="_blank">Listen</a>
-            <a href="#" class="view-lyrics" data-artist="${el.artist.name}" data-title="${el.album.title}" onclick="getLyrics('${el.artist.name}','${el.album.title}')">View Lyrics</a>
-          </div>  
-          </div>
-          
-          
-          <img src="${el.artist.picture}" alt="">
-        </div>`
-    }
-
-    getSelectedElement('list-container').innerHTML = itemElement;
-  });
+function getNextAndPrev(url) {
+  searchTerm = url.split('q=')[1];
+  searchArtist(searchTerm);
 }
 
 function searchArtist(artist) {
-  getSuggestions(artist);
+  searchResult = getSuggestions(artist);
+  searchResult.then(response => {
+    listContainerHtml = buildListContainerHtml(response)
+    getSelectedElement('list-container').innerHTML = listContainerHtml;
+  });
+}
+
+function buildSongCard(songs) {
+  let songCard = '';
+  for (song of songs) {
+    let title = JSON.stringify(song.album.title);
+    let artistName = JSON.stringify(song.artist.name);
+    console.log(title);
+    console.log(artistName);
+
+
+    songCard += `<div class="item" >
+        <img src="${song.album.cover}" alt="">
+        <div style="display: flex; flex-direction: column; margin: 1%;">
+          <p class="title"><b>Title:</b><span>${title}</p>
+          <p class="artist-name"><b>Artist:</b>${artistName}</p>
+          <div display:flex;>
+          <a href="${song.preview}" target="_blank">Listen</a>
+          <a href="#" class="view-lyrics" data-artist=${artistName} data-title=${title} onclick='getLyrics(${artistName},${title})'>View Lyrics</a>
+        </div>  
+        </div>
+        
+        
+        <img src="${song.artist.picture}" alt="">
+      </div>`
+  }
+
+  return songCard
+}
+
+function getSuggestions(searchTerm) {
+  return fetchExternalData('https://api.lyrics.ovh/suggest/'+searchTerm);
+}
+
+function buildNavigationButtons(next, prev) {
+  let navigationButtons = '';
+  if(next || prev) {
+    if(next && prev) {
+      navigationButtons =  `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${prev}');">Prev</button><button class='btn' onClick="getNextAndPrev('${next}');">Next</button></div>`;
+    } else if(next) {
+      navigationButtons = `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${next}');">Next</button></div>`;
+    } else {
+      navigationButtons= `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${prev}');">Prev</button></div>`;
+    }
+  }
+
+  return navigationButtons;
+}
+
+function buildListContainerHtml(response) {
+  let listContainerHtml = '';
+    if(0 === response.data.length) {
+      listContainerHtml = '<h3>Sorry, unable to process your request!!</h3>';
+    } else{
+      const songCards = buildSongCard(response.data);
+      const navigationButtons = buildNavigationButtons(response.next, response.prev);
+      listContainerHtml = songCards + navigationButtons;
+    }
+
+    return listContainerHtml;
+}
+
+
+function getLyrics(artist, title) {
+  let url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+  let modal = getSelectedElement("myModal");
+  let lyricsPromise = fetchExternalData(url)
+  lyricsPromise.then(data => {
+    modal.style.display = "block";
+    let lyrics = getSelectedElement("lyrics");
+    let heading = getSelectedElement('heading');
+    heading.innerHTML = `<h2>${title}</h2>`;
+    if( data.lyrics) {
+      lyrics.innerText = data.lyrics
+    } else {
+      lyrics.innerText = 'Lyrics not found!!'
+    }
+  });
+}
+
+
+getSelectedElement("close").onclick = function() {
+  let modal = getSelectedElement("myModal");
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  let modal = getSelectedElement("myModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
