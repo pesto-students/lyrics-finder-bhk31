@@ -37,6 +37,7 @@ function getNextAndPrev(url) {
 
 function searchArtist(artist) {
   searchResult = getSuggestions(artist);
+  
   searchResult.then(response => {
     listContainerHtml = buildListContainerHtml(response)
     getSelectedElement('list-container').innerHTML = listContainerHtml;
@@ -46,8 +47,8 @@ function searchArtist(artist) {
 function buildSongCard(songs) {
   let songCard = '';
   for (song of songs) {
-    let title = JSON.stringify(song.album.title);
-    let artistName = JSON.stringify(song.artist.name);
+    let title = song.album.title;
+    let artistName = song.artist.name;
     console.log(title);
     console.log(artistName);
 
@@ -59,11 +60,9 @@ function buildSongCard(songs) {
           <p class="artist-name"><b>Artist:</b>${artistName}</p>
           <div display:flex;>
           <a href="${song.preview}" target="_blank">Listen</a>
-          <a href="#" class="view-lyrics" data-artist=${artistName} data-title=${title} onclick='getLyrics(${artistName},${title})'>View Lyrics</a>
+          <a href="#" class="view-lyrics" data-artist=${artistName} data-title=${title} onclick="getLyrics('${artistName}','${title}')">View Lyrics</a>
         </div>  
         </div>
-        
-        
         <img src="${song.artist.picture}" alt="">
       </div>`
   }
@@ -79,7 +78,7 @@ function buildNavigationButtons(next, prev) {
   let navigationButtons = '';
   if(next || prev) {
     if(next && prev) {
-      navigationButtons =  `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${prev}');">Prev</button><button class='btn' onClick="getNextAndPrev('${next}');">Next</button></div>`;
+      navigationButtons = `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${prev}');">Prev</button><button class='btn' onClick="getNextAndPrev('${next}');">Next</button></div>`;
     } else if(next) {
       navigationButtons = `<div style="display:flex;justify-content:center; width:100%"><button class='btn' onClick="getNextAndPrev('${next}');">Next</button></div>`;
     } else {
@@ -103,7 +102,6 @@ function buildListContainerHtml(response) {
     return listContainerHtml;
 }
 
-
 function getLyrics(artist, title) {
   let url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
   let modal = getSelectedElement("myModal");
@@ -120,7 +118,6 @@ function getLyrics(artist, title) {
     }
   });
 }
-
 
 getSelectedElement("close").onclick = function() {
   let modal = getSelectedElement("myModal");
