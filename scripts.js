@@ -1,4 +1,5 @@
 getSelectedElement("song").addEventListener("keypress", checkKey, false);
+
 let form = document.getElementById("lyrics-form");
 
 form.addEventListener("submit", handleForm);
@@ -42,7 +43,7 @@ async function fetchExternalData(url = "") {
 }
 
 getSelectedElement("search").onclick = function () {
-  let song = getInputElementFromForm("lyrics-form", "song");
+  let song = getInputElementFromForm("lyrics-form", "song")
   searchArtist(song);
 };
 
@@ -52,9 +53,11 @@ function getNextAndPrev(url) {
 }
 
 function searchArtist(artist) {
+  artist = artist.replace(/["']/g, "");
   searchResult = getSuggestions(artist);
-
+  
   searchResult.then((response) => {
+    console.log(response);
     listContainerHtml = buildListContainer(response);
     getSelectedElement("list-container").innerHTML = listContainerHtml;
   });
@@ -63,8 +66,8 @@ function searchArtist(artist) {
 function buildSongCard(songs) {
   let songCard = "";
   for (song of songs) {
-    let title = song.album.title;
-    let artistName = song.artist.name;
+    let title = song.album.title.replace(/["']/g, "");
+    let artistName = song.artist.name.replace(/["']/g, "");
 
     songCard += `<div class="item" >
         <img src="${song.album.cover}" alt="">
