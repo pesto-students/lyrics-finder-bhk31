@@ -1,0 +1,100 @@
+<html>
+
+<head>
+  <title>Lyrics search</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="container" id="loggedIn">
+    <div style="display: flex; justify-content: center;">
+      <a href="https://pesto-students.github.io/lyrics-finder-bhk31/">
+        <img src="./assets/Tesla_band_logo.png" alt="" width="150" height="120">
+      </a>
+    </div>
+
+    <div class="main-container">
+      <form id="lyrics-form" action="#">
+        <input type="text" id="song" name="song" placeholder="Enter Artist/Title" />
+        <input type="button" value="Search" id="search" />
+      </form>
+
+      <div id="list-container">
+        <div class="artist" onclick="searchArtist('Miley Cirus')">
+          <img src="./assets/miley-cirus.jpg" alt="Miley Cirus">
+          <p style="text-align:center; font-weight:bold;">Miley Cirus</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Backstreet Boys')">
+          <img src="./assets/backstreet-boys.jpg" alt="Backstreet Boys">
+          <p style="text-align:center; font-weight:bold;">Backstreet Boys</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Camila Cabello')">
+          <img src="./assets/camilla.jpg" alt="Camila Cabello">
+          <p style="text-align:center; font-weight:bold;">Camila Cabello</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Daddy Yankee')">
+          <img src="./assets/daddy-yankee.jpg" alt="Daddy Yankee">
+          <p style="text-align:center; font-weight:bold;">Daddy Yankee</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Pitbull')">
+          <img src="./assets/pitbull.jpg" alt="Pitbull">
+          <p style="text-align:center; font-weight:bold;">Pitbull</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Jennifer Lopez')">
+          <img src="./assets/jlo.jpg" alt="Jennifer Lopez">
+          <p style="text-align:center; font-weight:bold;">Jennifer Lopez</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Justin Bieber')">
+          <img src="./assets/justin-bieber.jpg" alt="Justin Bieber">
+          <p style="text-align:center; font-weight:bold;">Justin Bieber</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Justin Timberlake')">
+          <img src="./assets/justin-timberlake.jpg" alt="Justin Timberlake">
+          <p style="text-align:center; font-weight:bold;">Justin Timberlake</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Akon')">
+          <img src="./assets/akon.jpg" alt="Akon">
+          <p style="text-align:center; font-weight:bold;">Akon</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Nick Jonas')">
+          <img src="./assets/nick-jonas.jpg" alt="Nick Jonas">
+          <p style="text-align:center; font-weight:bold;">Nick Jonas</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Priyanka Chopra')">
+          <img src="./assets/priyanka.jpg" alt="Priyanka Chopra">
+          <p style="text-align:center; font-weight:bold;">Priyanka Chopra</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Bruno Mars')">
+          <img src="./assets/bruno-marsjpg.jpg" alt="Bruno Mars">
+          <p style="text-align:center; font-weight:bold;">Bruno Mars</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Ed Sheeran')">
+          <img src="./assets/ed-sheeran.jpg" alt="Ed Sheeran">
+          <p style="text-align:center; font-weight:bold;">Ed Sheeran</p>
+        </div>
+        <div class="artist" onclick="searchArtist('One Direction')">
+          <img src="./assets/one-direction.jpg" alt="One Direction">
+          <p style="text-align:center; font-weight:bold;">One Direction</p>
+        </div>
+        <div class="artist" onclick="searchArtist('Nicole Scherzinger')">
+          <img src="./assets/nicole-scherzinger.jpg" alt="Nicole Scherzinger">
+          <p style="text-align:center; font-weight:bold;">Nicole Scherzinger</p>
+        </div>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span id="close">&times;</span>
+          <h2 id=heading></h2>
+          <p id=lyrics></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./scripts.js"></script>
+
+</html>
